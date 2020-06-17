@@ -76,6 +76,7 @@ class App extends Component {
         <h2>Contacts</h2>
         {contacts.length > 1 && <Filter value={filter} onChangeFilter={this.changeFilter} />}
         {contacts.length > 0 && <ContactList contacts={visibleContacts} onRemove={this.RemoveContact} />}
+        {!visibleContacts.length && <div>Not faund</div>}
       </div>
     );
   }
