@@ -5,7 +5,7 @@ import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
 
-import { uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import styles from './ContactForm/ContactForm.module.scss';
 
@@ -66,7 +66,7 @@ class App extends Component {
   }
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     const visibleContacts = this.getVisibleContacts();
 
     return (
@@ -74,8 +74,8 @@ class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onAddContact={this.AddContacts} />
         <h2>Contacts</h2>
-        {visibleContacts.length > 1 && <Filter value={filter} onChangeFilter={this.changeFilter} />}
-        {visibleContacts.length > 0 && <ContactList contacts={visibleContacts} onRemove={this.RemoveContact} />}
+        {contacts.length > 1 && <Filter value={filter} onChangeFilter={this.changeFilter} />}
+        {contacts.length > 0 && <ContactList contacts={visibleContacts} onRemove={this.RemoveContact} />}
       </div>
     );
   }
